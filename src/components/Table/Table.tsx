@@ -37,7 +37,7 @@ const TableWithPagination = <TRow extends Record<string, any>>({ columns, data, 
                     <TableHead>
                         <TableRow sx={{ backgroundColor: "#f5f5f5" }}>
                             {columns.map(column => {
-                                return <TableCell><strong>{capitalizeFirstLetter(column)}</strong></TableCell>
+                                return <TableCell key={`column-${column}`}><strong>{capitalizeFirstLetter(column)}</strong></TableCell>
                             })}
                         </TableRow>
                     </TableHead>
