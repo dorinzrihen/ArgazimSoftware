@@ -109,8 +109,9 @@ const TableWithPagination = <TRow extends Record<string, any>>({ columns, data, 
                 >
                     Prev
                 </Button>
-                <Typography component="span">
-                    Page {pageNumber} of {totalPages}
+                <Typography component="span">{
+                    isLoading ? "Loading..." : `Page ${pageNumber} of ${totalPages}`
+                }
                 </Typography>
                 <Button
                     variant="outlined"
