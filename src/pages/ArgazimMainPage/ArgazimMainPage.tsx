@@ -1,5 +1,5 @@
 import { useState } from "react";
-import usePeople from "../../hooks/usePeople/usePeople";
+import {usePeople, Columns, PeopleRes} from "../../hooks/usePeople";
 import {
     Typography,
     Stack,
@@ -11,7 +11,7 @@ const ArgazimMainPage = () => {
     const [pageSize, setPageSize] = useState<number>(10);
 
     const { data, isLoading, isError } = usePeople(pageSize, page);
-    const columns = ['firstName', 'lastName', 'gender', 'age']
+    const columns: Columns[] = ['firstName', 'lastName', 'gender', 'age']
     const peopleArray = data?.data || [];
     const totalCount = Number(data?.totalCount) || 0;
 
@@ -30,7 +30,7 @@ const ArgazimMainPage = () => {
                     People List
                 </Typography>
             </Stack>
-            <TableWithPagination
+            <TableWithPagination<PeopleRes>
                 data={peopleArray}
                 pageNumber={page}
                 pageSize={pageSize}

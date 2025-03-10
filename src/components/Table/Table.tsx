@@ -16,7 +16,7 @@ import {
 } from "@mui/material";
 import { TableProps } from "./Table.types";
 
-const TableWithPagination = ({ columns, data, pageNumber = 0, pageSize = 0, handleUpdatePage, handleUpagePageSize, totalCount = 0, isLoading, isError }: TableProps) => {
+const TableWithPagination = <TRow extends Record<string, any>>({ columns, data, pageNumber = 0, pageSize = 0, handleUpdatePage, handleUpagePageSize, totalCount = 0, isLoading, isError }: TableProps<TRow>) => {
     const capitalizeFirstLetter = (str?: string) =>
         str ? str.charAt(0).toUpperCase() + str.slice(1) : "";
 
@@ -65,7 +65,7 @@ const TableWithPagination = ({ columns, data, pageNumber = 0, pageSize = 0, hand
                                     </TableCell>
                                 </TableRow>
                             ) : (
-                                data.map((row: PeopleRes, index: number) => (
+                                data.map((row: TRow, index: number) => (
                                     <TableRow key={`${index}`}>
                                         {columns.map(col => {
                                             return <TableCell key={`${col}-${index}`}>{row[col]}</TableCell>

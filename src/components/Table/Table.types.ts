@@ -1,4 +1,4 @@
-export type TableProps = {
+export type TableProps<TRow> = {
     pageSize?: number;
     totalCount?: number;
     pageNumber?: number;
@@ -6,6 +6,6 @@ export type TableProps = {
     handleUpagePageSize: (pageSize: number) => void;
     isLoading: boolean;
     isError: boolean;
-    data: any;
-    columns: string[]
+    data: TRow[];
+    columns: Array<Extract<keyof TRow, string>>
 }
